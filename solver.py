@@ -1,5 +1,5 @@
-import dancing_links as dl
-import polyomino as pm
+import polyomino.dancing_links as dl
+import polyomino.polyomino as pm
 from collections import defaultdict
 import itertools
 

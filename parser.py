@@ -1,6 +1,6 @@
 import svgwrite
 
-from polyomino import Polyomino
+from polyomino.polyomino import Polyomino
 
 _colors = [
     (60, 180, 75),
