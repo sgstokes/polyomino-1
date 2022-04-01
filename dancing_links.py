@@ -11,6 +11,7 @@ def solve(X, Y, solution=[]):
             deselect(X, Y, r, cols)
             solution.pop()
 
+
 def select(X, Y, r):
     cols = []
     for j in Y[r]:
@@ -20,6 +21,7 @@ def select(X, Y, r):
                     X[k].remove(i)
         cols.append(X.pop(j))
     return cols
+
 
 def deselect(X, Y, r, cols):
     for j in reversed(Y[r]):

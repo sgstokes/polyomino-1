@@ -1,5 +1,5 @@
-import sys
 import functools as _ft
+import sys
 
 
 def generate(n):
@@ -64,7 +64,7 @@ def free(minos, sort=True):
 
 def mino_key(m):
     h, w = m.shape
-    return (len(m), h / w, sum(2**(i + j * w) for i, j in m))
+    return (len(m), h / w, sum(2 ** (i + j * w) for i, j in m))
 
 
 def _neighbors(point):
@@ -74,7 +74,6 @@ def _neighbors(point):
 
 
 class Polyomino(frozenset):
-
     def grid(self):
 
         h, w = self.shape
@@ -94,7 +93,7 @@ class Polyomino(frozenset):
         result = []
         for row in grid:
             result.append("".join(cell if c else empty for c in row))
-        return '\n'.join(result)
+        return "\n".join(result)
 
     def __eq__(self, other):
 
@@ -183,46 +182,45 @@ class Polyomino(frozenset):
 
     def rotations(self):
 
-        return [self,
-                self.rotate_left(),
-                self.rotate_half(),
-                self.rotate_right()]
+        return [self, self.rotate_left(), self.rotate_half(), self.rotate_right()]
 
     # def
 
     def transforms(self):
 
-        return [self,
-                self.rotate_left(),
-                self.rotate_half(),
-                self.rotate_right(),
-                self.reflect_vert(),
-                self.reflect_horiz(),
-                self.reflect_diag(),
-                self.reflect_skew()]
+        return [
+            self,
+            self.rotate_left(),
+            self.rotate_half(),
+            self.rotate_right(),
+            self.reflect_vert(),
+            self.reflect_horiz(),
+            self.reflect_diag(),
+            self.reflect_skew(),
+        ]
 
     def symmetry(self):
-        sym = ''
+        sym = ""
         if self == self.reflect_horiz():
-            sym += '|'
+            sym += "|"
         if self == self.reflect_vert():
-            sym += '-'
+            sym += "-"
         if self == self.reflect_diag():
-            sym += '\\'
+            sym += "\\"
         if self == self.reflect_skew():
-            sym += '/'
+            sym += "/"
         if self == self.rotate_half():
-            sym += '%'
+            sym += "%"
         if self == self.rotate_left():
-            sym += '@'
-        if '|-' in sym:
-            sym += '+'
-        if '\\/' in sym:
-            sym += 'X'
-        if '@+X' in sym:
-            sym += 'O'
+            sym += "@"
+        if "|-" in sym:
+            sym += "+"
+        if "\\/" in sym:
+            sym += "X"
+        if "@+X" in sym:
+            sym += "O"
         if not sym:
-            sym = '?'
+            sym = "?"
         return sym
 
     def children(self):
